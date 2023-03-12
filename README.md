@@ -5,7 +5,7 @@ This repository contains automated test scripts for testing a web application us
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/jsn2142/nopCommerce-cypress-automation-script.git
    ```
 2. Install the necessary dependencies
    ```sh
