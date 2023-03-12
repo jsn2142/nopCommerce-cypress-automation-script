@@ -1,0 +1,10 @@
+{
+  "user01" : {
+    "firstName": "Newt",
+    "lastName": "Scamander"
+  },
+  "user02" : {
+    "firstName": "Credence",
+    "lastName": "Barebone"
+  }   
+}
