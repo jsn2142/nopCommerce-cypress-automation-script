@@ -19,7 +19,7 @@ describe('Place an Order as Guest User', () => {
         it('Checkout with the order', () => {
             cy.orderCheckOut('Checkout as a guest or register')
         })
-    })
+    })    
     describe('Insert the Guest user billing information for the purchase', () => {
         it('Insert the guest billing address information', () => {
             cy.fixture('userInfo').then((userData) => {
