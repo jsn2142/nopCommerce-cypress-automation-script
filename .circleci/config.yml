@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: npm ci
+      - cypress/install
 orbs:
   cypress: cypress-io/cypress@2.2.0
 
