@@ -10,17 +10,16 @@ jobs:
     executor: my-custom-executor
     steps: 
       - checkout
-      - run:
-          name: Install Dependencies
-          command: npm ci
-      - cypress/install
+      # - run:
+      #     name: Install Dependencies
+      #     command: npm ci
 orbs:
   cypress: cypress-io/cypress@2.2.0
 
 workflows:
   test-cypress-tests:
     jobs:
-      # - cypress/install
+      - cypress/install
       - cypress/run:
          #executor: my-custom-executor
          command: npx cypress run
