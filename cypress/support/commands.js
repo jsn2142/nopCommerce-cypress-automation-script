@@ -22,6 +22,7 @@ var electronicsCategoryButton = "body > div:nth-child(7) > div:nth-child(2) > ul
 var cellPhonesSubCategory = "li[class='active last'] li:nth-child(2) a:nth-child(1)"
 var nokiaLumiaProduct = ":nth-child(1) > .product-item > .details > .product-title > a"
 var productNameTitle = "div[class='product-name'] h1"
+var productDescription = '.short-description'
 var productQuantityField = "#product_enteredQuantity_20"
 var addToCartButton = "#add-to-cart-button-20"
 var upperMessageContent = ".content"
@@ -119,24 +120,27 @@ Cypress.Commands.add('selectAProduct', (assertionString) => {
     cy.get(cellPhonesSubCategory).click()
     cy.wait(1000)
     cy.get(nokiaLumiaProduct).click()
-    cy.wait(3000)
+    // cy.wait(3000)
     // Commented out the below assertion for an application error that occurs sometimes
     // cy.get(productNameTitle).should('include.text', assertionString)
     // cy.wait(1000)
 })
 Cypress.Commands.add('addToCart', (prodQuantity) => {
+    cy.get(productDescription, { timeout: 10000 }).should('be.visible')
     cy.get(productQuantityField).clear()
     cy.wait(1000)
     cy.get(productQuantityField).type(prodQuantity)
     cy.wait(1000)
     cy.get(addToCartButton).click()
-    cy.wait(1000)
+    // cy.wait(1000)
+    cy.get(upperMessageContent, { timeout: 10000 }).should('be.visible')
     cy.get(upperMessageContent).should('include.text', 'The product has been added to your shopping cart')
     cy.wait(1000)
     cy.get(upperMessageContentCloseButton).click()
     cy.wait(1000)
     cy.get(shoppingCartButton).click()
-    cy.wait(1000)
+    // cy.wait(1000)
+    cy.get(shoppingCartPageHeader, { timeout: 10000 }).should('be.visible')
     cy.get(shoppingCartPageHeader).should('include.text', 'Shopping cart')
 })
 Cypress.Commands.add('orderCheckOut', (assertionString) => {
@@ -201,6 +205,7 @@ Cypress.Commands.add('confirmOrder', () => {
 })
 Cypress.Commands.add('verifyPurchaseInfo', (userFullName) => {
     cy.get(orderDetailsPageLink).click()
-    cy.wait(3000)
+    // cy.wait(3000)
+    cy.get(billedUserFullName, { timeout: 10000 }).should('be.visible')
     cy.get(billedUserFullName).should('include.text', userFullName)
 })
