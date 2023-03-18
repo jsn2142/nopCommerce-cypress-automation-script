@@ -5,9 +5,9 @@ executors:
       - image: cimg/base:stable
         auth:
           # ensure you have first added these secrets
-    resource_class: medium
+    resource_class: large
 orbs:
-  cypress: cypress-io/cypress@3.0.0
+  cypress: cypress-io/cypress@2.2.0
 
 workflows:
   orb_tests:
