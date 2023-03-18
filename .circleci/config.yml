@@ -3,36 +3,34 @@ executors:
   my-custom-executor:
     docker:
       - image: cimg/base:stable
-        auth:
-          # ensure you have first added these secrets
-          # visit app.circleci.com/settings/project/
-          #username: $DOCKER_HUB_USER
-          #password: $DOCKER_HUB_PASSWORD
+        auth:    
     resource_class: medium
 jobs:
   my-job-name:
-
     executor: my-custom-executor
-    steps:
+    steps: 
       - checkout
-      - run: |
-          # echo Configuration for the app
-          
-    
+      - run:
+          name: Install Dependencies
+          command: npm ci
 orbs:
   cypress: cypress-io/cypress@1
+
 workflows:
-  build:
+  paypipes-cypress-tests:
     jobs:
       - cypress/install
       - cypress/run:
-         #start: npx cypress open
-
+         #executor: my-custom-executor
+         command: npx cypress run
          yarn: true
          store_artifacts: true
-
          requires:
           - cypress/install
          parallel: true
-         parallelism: 2
-         group: 4 machines
+         parallelism: 1
+         #command: npx cypress run --env split=true
+
+          
+          
+         #group: 3 machines
