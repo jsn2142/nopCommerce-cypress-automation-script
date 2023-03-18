@@ -2,7 +2,7 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: 'cypress/browsers:node16.16.0-chrome107-ff107-edge'
+      - image: cypress/base:14.16.0
         auth:
           # ensure you have first added these secrets
     resource_class: large
