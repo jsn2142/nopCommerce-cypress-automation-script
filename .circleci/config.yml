@@ -8,7 +8,7 @@ executors:
           # visit app.circleci.com/settings/project/github/purple-technology/punext-pms-cypress-script/environment-variables
           #username: $DOCKER_HUB_USER
           #password: $DOCKER_HUB_PASSWORD
-    resource_class: medium
+    resource_class: large
 jobs:
   my-job-name:
 
