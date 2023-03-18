@@ -25,8 +25,8 @@ workflows:
          command: npx cypress run
          yarn: true
          store_artifacts: true
-        #  requires:
-        #   - cypress/install
+         requires:
+          - cypress/install
          parallel: true
          parallelism: 1
          #command: npx cypress run --env split=true
