@@ -2,7 +2,7 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cypress/base:14.17.0
+      - image: cimg/base:stable
         auth:    
     resource_class: medium
 jobs:
@@ -12,9 +12,9 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          #command: npm ci
+          command: npm ci
 orbs:
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@2.2.0
 
 workflows:
   test-cypress-tests:
