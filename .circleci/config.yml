@@ -2,27 +2,37 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cypress/base:10.22.1
+      - image: cimg/base:stable
         auth:
           # ensure you have first added these secrets
-    resource_class: large
-orbs:
-  cypress: cypress-io/cypress@5.5.0
+          # visit app.circleci.com/settings/project/
+          #username: $DOCKER_HUB_USER
+          #password: $DOCKER_HUB_PASSWORD
+    resource_class: medium
+jobs:
+  my-job-name:
 
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          # echo Configuration for the app
+          
+    
+orbs:
+  cypress: cypress-io/cypress@1
 workflows:
-  orb_tests:
+  build:
     jobs:
-      - cypress/install:
-          #executor: my-custom-executor
-          yarn: true
+      - cypress/install
       - cypress/run:
-          #command: npx cypress run --spec cypress/e2e/actions.cy.js
-          command: npx cypress run
-          #executor: my-custom-executor
-          yarn: true
-          store_artifacts: false
-          requires:
-            - cypress/install
-          parallel: true
-          parallelism: 4
-          group: 2 machines
+         #start: npx cypress open
+
+         yarn: true
+         store_artifacts: true
+
+         requires:
+          - cypress/install
+         parallel: true
+         parallelism: 2
+         group: 4 machines
