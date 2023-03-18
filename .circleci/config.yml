@@ -7,7 +7,7 @@ executors:
           # ensure you have first added these secrets
     resource_class: medium
 orbs:
-  cypress: cypress-io/cypress@2.2.0
+  cypress: cypress-io/cypress@3.0.0
 
 workflows:
   orb_tests:
