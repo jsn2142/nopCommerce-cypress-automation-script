@@ -12,10 +12,9 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm ci --ignore-scripts
-
+          command: npm ci
 orbs:
-  cypress: cypress-io/cypress@2.2.0
+  cypress: cypress-io/cypress@1
 
 workflows:
   test-cypress-tests:
