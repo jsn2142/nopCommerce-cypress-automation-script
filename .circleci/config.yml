@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm ci
+          #command: npm ci
 orbs:
   cypress: cypress-io/cypress@1
 
