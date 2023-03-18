@@ -2,12 +2,12 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cypress/base:12.18.0
+      - image: cypress/base:10.22.1
         auth:
           # ensure you have first added these secrets
     resource_class: large
 orbs:
-  cypress: cypress-io/cypress@1.7.0
+  cypress: cypress-io/cypress@5.5.0
 
 workflows:
   orb_tests:
