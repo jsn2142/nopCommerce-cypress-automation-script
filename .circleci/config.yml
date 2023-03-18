@@ -20,7 +20,8 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install
+      - cypress/install:
+         command: npm install
       - cypress/run:
          #start: npx cypress open
          yarn: true
