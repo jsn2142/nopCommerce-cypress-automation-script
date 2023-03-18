@@ -4,33 +4,25 @@ executors:
     docker:
       - image: cimg/base:stable
         auth:
-    #resource_class: large
-jobs:
-  my-job-name:
-
-    executor: my-custom-executor
-    steps:
-      - checkout
-      - run: |
-           # echo Configuration
-          
-    
+          # ensure you have first added these secrets
+    resource_class: medium
 orbs:
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@2.2.0
+
 workflows:
-  build:
+  orb_tests:
     jobs:
       - cypress/install:
-         command: npm install
-      - run: yarn install --frozen-lockfile
+          #executor: my-custom-executor
+          yarn: true
       - cypress/run:
-         #start: npx cypress open
-         yarn: true
-         store_artifacts: true
-         record: false
-         #command: npx cypress run --e2e
-         requires:
-          - cypress/install
-         parallel: true
-         parallelism: 2
-         group: 4 machines
+          #command: npx cypress run --spec cypress/e2e/actions.cy.js
+          command: npx cypress run
+          #executor: my-custom-executor
+          yarn: true
+          store_artifacts: false
+          requires:
+            - cypress/install
+          parallel: true
+          parallelism: 4
+          group: 2 machines
