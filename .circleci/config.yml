@@ -10,9 +10,10 @@ jobs:
     executor: my-custom-executor
     steps: 
       - checkout
-      # - run:
-      #     name: Install Dependencies
-      #     command: npm ci
+      - run:
+          name: Install Dependencies
+          command: npm ci --ignore-scripts
+
 orbs:
   cypress: cypress-io/cypress@2.2.0
 
