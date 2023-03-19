@@ -11,7 +11,7 @@ This repository contains automated test scripts for testing a web application us
    ```sh
    npm install
    ``` 
-3. Install Cypress
+3. Install Cypress in the repo directory in the local machine
    ```sh
    npm install cypress --save-dev
    ``` 
