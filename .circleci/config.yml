@@ -14,7 +14,7 @@ workflows:
     jobs:
       - cypress/install:
           #executor: my-custom-executor
-          yarn: true
+          #yarn: true
       - cypress/run:
           #command: npx cypress run --spec cypress/e2e/actions.cy.js
           command: npx cypress run
