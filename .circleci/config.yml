@@ -3,34 +3,26 @@ executors:
   my-custom-executor:
     docker:
       - image: cimg/base:stable
-        auth:    
+        auth:
+          # ensure you have first added these secrets
     resource_class: medium
-jobs:
-  my-job-name:
-    executor: my-custom-executor
-    steps: 
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: npm ci
 orbs:
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@2.2.0
 
 workflows:
-  test-cypress-tests:
+  orb_tests:
     jobs:
-      - cypress/install
+      - cypress/install:
+          #executor: my-custom-executor
+          yarn: true
       - cypress/run:
-         #executor: my-custom-executor
-         command: npx cypress run
-         yarn: true
-         store_artifacts: true
-         requires:
-          - cypress/install
-         parallel: true
-         parallelism: 1
-         #command: npx cypress run --env split=true
-
-          
-          
-         #group: 3 machines
+          #command: npx cypress run --spec cypress/e2e/actions.cy.js
+          command: npx cypress run
+          #executor: my-custom-executor
+          yarn: true
+          store_artifacts: false
+          requires:
+            - cypress/install
+          parallel: true
+          parallelism: 4
+          group: 2 machines
