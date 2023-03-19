@@ -7,6 +7,7 @@ module.exports = defineConfig({
   experimentalModifyObstructiveThirdPartyCode: true,
   e2e: {
     testIsolation: false,
+    experimentalSessionAndOrigin: true,
     experimentalStudio: true,
     reporter: 'cypress-mochawesome-reporter',
     setupNodeEvents(on, config) {

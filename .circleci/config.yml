@@ -1,0 +1,28 @@
+version: 2.1
+executors:
+  my-custom-executor:
+    docker:
+      - image: cimg/base:stable
+        auth:
+          # ensure you have first added these secrets
+    resource_class: medium
+orbs:
+  cypress: cypress-io/cypress@2.2.0
+
+workflows:
+  orb_tests:
+    jobs:
+      - cypress/install:
+          #executor: my-custom-executor
+          #yarn: true
+      - cypress/run:
+          #command: npx cypress run --spec cypress/e2e/actions.cy.js
+          command: npx cypress run
+          #executor: my-custom-executor
+          yarn: true
+          store_artifacts: false
+          requires:
+            - cypress/install
+          parallel: true
+          parallelism: 4
+          group: 2 machines
